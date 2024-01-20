@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>section</title>
+</head>
+<body>
+    {%if sections%}
+    <H1>List for all sections</H1>
+    <ul>
+        {%for section in sections%}
+        <li>{{section.section_name}}<a href="{%url 'delSection' section.id %}"> delete</a></li>
+        {%endfor%}
+    </ul>
+    {%else%}
+    <H1>Creat a Section</H1>
+    <form action="{%url 'section'%}" method="POST">
+        {%csrf_token%}
+        {{section.as_p}}
+        <input type="submit" name="submit" id="submit">
+    </form>
+    {%endif%}
+    <a href="{%url 'student' %}">Add student</a>
+</body>
+</html>
